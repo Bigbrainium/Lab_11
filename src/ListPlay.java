@@ -36,6 +36,7 @@ public class ListPlay {
         list.add(item);
     }
 
+    // Prompts the user for an index and deletes the value at such index
     public static void delete() {
         int item = Helper.getRangedInt(scan, "What do you want to delete? (# value on the list)", 0, list.size());
         list.remove(item-1);
