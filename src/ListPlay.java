@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class ListPlay {
     public static ArrayList<String> list = new ArrayList<>(10);
     public static Scanner scan = new Scanner(System.in);
+    public static boolean quit = false;
 
     public static void main(String[] args) {
 
@@ -13,7 +14,7 @@ public class ListPlay {
             list.add(i,"epic" + i);
         }
 
-        while (true) {
+        while (!quit) {
 
             System.out.println(" ");
             choice = Helper.getRegExString(scan, "Options: \nA - Add item to list \nD - Delete item from list \nP - Print out list \nQ - Quit the program ", "[AaDdPpQq]");
@@ -25,7 +26,7 @@ public class ListPlay {
             } else if (choice.equalsIgnoreCase("p")) {
                 printList();
             } else if (choice.equalsIgnoreCase("q")) {
-                break;
+                quit();
             }
         }
     }
@@ -47,7 +48,12 @@ public class ListPlay {
     public static void printList() {
         System.out.println(" ");
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
+            System.out.println(i+1 + ". " + list.get(i));
         }
+    }
+
+    // Quits the program
+    public static void quit() {
+        quit = Helper.getYNConfirm(scan, "Do you wish to exit the program? [Y/N]");
     }
 }
